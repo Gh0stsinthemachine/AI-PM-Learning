@@ -1,0 +1,93 @@
+/* AI PM 102 design tokens. No @layer: the platform reset is unlayered and would beat layered rules.
+   Layout concept: a transit-map course. Station-name boards for headings,
+   one colored line per module, zones as rings (Zone 1 inside, Zone 2 outside).
+   Every color is a token. Light values live on bare :root; both dark blocks
+   only redefine them (the host sets data-theme, or the OS decides). */
+
+:root {
+  --bg: #f4f5f2;
+  --surface: #ffffff;
+  --surface-2: #eaece7;
+  --ink: #16191d;
+  --ink-2: #4a525b;
+  --rule: #d3d8d1;
+  --focus: #16191d;
+  --focus-halo: #ffffff;
+  --good: #1b7a43;
+  --warn: #9a5b00;
+  --bad: #b3261e;
+
+  /* The nine lines (modules) */
+  --line-1: #d7263d;
+  --line-2: #e8590c;
+  --line-3: #c98a00;
+  --line-4: #1f9d55;
+  --line-5: #0e8f94;
+  --line-6: #2f55d4;
+  --line-7: #7b3fc4;
+  --line-8: #c2307f;
+  --line-9: #8a5a3c;
+
+  --font-sign: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Atkinson Hyperlegible Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3rem;
+  --step-2: 1.75rem;
+  --step-3: 2.5rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --measure: 65ch;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0f1318;
+    --surface: #171c23;
+    --surface-2: #1f262f;
+    --ink: #e9ecee;
+    --ink-2: #a7b0ba;
+    --rule: #2a323c;
+    --focus: #e9ecee;
+    --focus-halo: #0f1318;
+    --good: #4cc380;
+    --warn: #e0a23a;
+    --bad: #ff7b72;
+    --line-1: #ff5a6e;
+    --line-2: #ff8a3d;
+    --line-3: #f2b33d;
+    --line-4: #3dd17f;
+    --line-5: #3cc8ce;
+    --line-6: #6f8cff;
+    --line-7: #a87bff;
+    --line-8: #ff6fb1;
+    --line-9: #c79470;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1318;
+  --surface: #171c23;
+  --surface-2: #1f262f;
+  --ink: #e9ecee;
+  --ink-2: #a7b0ba;
+  --rule: #2a323c;
+  --focus: #e9ecee;
+  --focus-halo: #0f1318;
+  --good: #4cc380;
+  --warn: #e0a23a;
+  --bad: #ff7b72;
+  --line-1: #ff5a6e;
+  --line-2: #ff8a3d;
+  --line-3: #f2b33d;
+  --line-4: #3dd17f;
+  --line-5: #3cc8ce;
+  --line-6: #6f8cff;
+  --line-7: #a87bff;
+  --line-8: #ff6fb1;
+  --line-9: #c79470;
+  color-scheme: dark;
+}

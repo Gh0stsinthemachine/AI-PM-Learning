@@ -1,0 +1,77 @@
+## A prompt is the whole request
+
+A <Term id="prompt">prompt</Term> is everything you send a model for one request: the instructions, the material to work on and any examples. The model has no memory of you beyond what is in the prompt, so whatever it needs to do the job well has to be written there.
+
+Most weak AI output comes from a thin prompt, not a weak model. People type the way they would talk to a colleague who already knows the project. The model does not know the project.
+
+## Six parts of a good prompt
+
+You do not need all six every time. Knowing them lets you see what is missing when an answer disappoints.
+
+1. **Role.** Who the model should act as. A <Term id="role-prompt">role</Term> focuses its tone and behavior, and even one sentence helps. "You are a customer-insights analyst for a guitar shop."
+2. **Task.** What to do, with a specific verb. "Summarize the reviews below into the three most common complaints and the three most common praises."
+3. **Context.** What the model needs to know: the audience, the background, the material itself. "We sell used guitars online. The reviews are from the last 90 days."
+4. **Examples.** One to three samples of the output you want. Including them is called <Term id="few-shot">few-shot prompting</Term>. Examples are one of the most reliable ways to steer format and tone. Anthropic suggests three to five for best results when you can.
+5. **Format.** The shape of the answer. "Two bulleted lists, no more than 15 words per bullet."
+6. **Constraints.** The limits. "Use only what is in the reviews. If a point appears only once, leave it out."
+
+Put together, the guitar shop prompt reads like a short brief to a new analyst. Try it in the next step and switch the parts on and off to see what each one changes.
+
+<Figure id="prompt-anatomy" />
+
+## Before and after
+
+Here is the weak version most people start with.
+
+```
+Summarize these reviews.
+```
+
+And here is the same request with the six parts filled in. Round 15 shows how wrapping each part in XML tags makes a long prompt even clearer.
+
+```
+You are a customer-insights analyst for a guitar shop.
+
+Summarize the reviews below into the three most common complaints
+and the three most common praises. We sell used guitars online and
+the reviews are from the last 90 days.
+
+Example of the style I want:
+Complaints
+- Packaging damaged the case (mentioned often)
+Praises
+- Setup was ready to play out of the box
+
+Return two bulleted lists, no more than 15 words per bullet.
+Use only what is in the reviews. If a point appears once, leave it out.
+```
+
+The second prompt is longer, and every added line removes a guess. Where should the model look? What counts as common? How long should it be? What if the reviews say something odd? With the first prompt the model answers all of those for you, and you will not always like its answers.
+
+One more habit helps. When you paste a long document into a prompt, put the document first and your question or instructions after it. Anthropic's guide says placing long material above the question improves results.
+
+## Iterate, do not perfect
+
+Nobody writes the best prompt on the first try. The working method is simple. Write a first version. Run it on five to ten real inputs, not one easy one. Look at where it fails. Change one thing at a time so you know what helped. Then run it again on the same inputs.
+
+That last step is the one teams skip. A change that fixes one input can break another. Before you change a prompt that matters, decide what "good" means and how you will test it. Anthropic's own guide makes the same point: have success criteria and a way to test them before you start tuning. Round 7 is about exactly that.
+
+<Callout kind="gap">
+Four ways prompts go wrong. A vague task, like "make it better". Instructions that quietly contradict each other, like "be brief" and "explain everything". Testing on one easy example and calling it done. And treating the prompt as finished when nobody has checked what it does on messy real inputs.
+</Callout>
+
+## Who owns the prompt
+
+In an AI product the prompt is part of the product. It decides behavior, so it needs an owner, a version history and a test before every change, the same way code does. As a product manager you may not write every prompt, but you should be able to read them, and you should know who is responsible for each one.
+
+<Callout kind="change">
+Round 15, "Prompt structure", covers XML tags, templates and chaining. Round 7 covers how to test a prompt properly.
+</Callout>
+
+## Questions to ask your team
+
+Where do our prompts live, and who can change them? What set of real inputs do we run before a change ships? What does the prompt tell the model to do when it does not know?
+
+<Sources>
+Sources: [Anthropic, Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) and [Prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview). Checked Oct 2026.
+</Sources>

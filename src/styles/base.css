@@ -1,5 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; }
-h1, h2, h3, p, ul, ol, figure { margin: 0; }
+h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; }
 button, input, textarea, select { font: inherit; color: inherit; }
 
 body {
@@ -21,30 +21,5 @@ code, pre, kbd { font-family: var(--font-mono); }
 a { color: inherit; text-underline-offset: 0.2em; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; box-shadow: 0 0 0 5px var(--focus-halo); }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
-
-.app { max-width: 72rem; margin-inline: auto; padding-block: 1.5rem 4rem; }
-
-/* Station-name board: the signature heading */
-.board {
-  display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
-  background: var(--ink); color: var(--bg);
-  padding: 0.6rem 1rem; border-radius: 4px;
-  font-family: var(--font-sign); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
-}
-.board__bullet {
-  display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; border-radius: 999px;
-  background: var(--line, var(--line-1)); color: #fff; font-size: 1.1rem; padding-inline: 0.4rem;
-}
-.board__name { font-size: var(--step-2); line-height: 1; }
-.board__zone { margin-left: auto; font-size: var(--step--1); opacity: 0.85; }
-
-.boot { display: flex; align-items: center; gap: 0.75rem; padding-block: 3rem; font-family: var(--font-sign); text-transform: uppercase; letter-spacing: 0.04em; }
-.boot__bullet { width: 1.5rem; height: 1.5rem; border-radius: 999px; background: var(--line-1); }
-.boot__name { font-size: var(--step-2); font-weight: 700; }
-.boot__sub { color: var(--ink-2); font-size: var(--step-1); }
-
-.probe { margin-top: 1.5rem; display: grid; gap: 0.5rem; }
-.probe dt { font-family: var(--font-sign); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-2); }
-.probe dd { margin: 0 0 0.5rem; }

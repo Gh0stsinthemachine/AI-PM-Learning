@@ -1,0 +1,51 @@
+## What a model is
+
+A <Term id="model">model</Term> is the trained file of numbers that turns input text into output text. Those numbers are called <Term id="weights">weights</Term>. They start out random, and <Term id="training">training</Term> adjusts them, over and over, on huge amounts of text until the model predicts the next token well. Training is a one-time, very expensive process done by the company that makes the model.
+
+When you send a prompt, the model runs with its weights frozen. Using a trained model is called <Term id="inference">inference</Term>. The model does not learn from your conversation. If a product seems to remember you, that is the product saving notes and sending them along with your next message, not the model changing.
+
+Training also has an end date. The <Term id="knowledge-cutoff">knowledge cutoff</Term> is the date after which the model saw no training data, so it knows nothing newer unless the product gives it that information. This is one reason Round 4 matters: much of AI product work is getting the right information in front of the model.
+
+## Closed models and open-weights models
+
+You can reach a model in two broad ways.
+
+A <Term id="closed-model">closed model</Term> is one you can only use through the provider's app or API. You send text, you get text back, and the weights stay private. Claude, GPT and Gemini work this way.
+
+An <Term id="open-weights">open-weights model</Term> is one whose weights are published, so others can download it and run it on their own machines or rent a host to run it. Examples include the Llama, Qwen and DeepSeek families, and some Mistral models. "Open-weights" is not always the same as "open source". The license can still have limits, and the training data is usually not shared. Round 13 goes into this.
+
+<LastChecked date="Oct 2026" />
+
+Which should you pick? A closed model is usually the fastest way to get the strongest quality with the least setup. An open-weights model gives you more control over where data goes and how it runs, and it can cost less at large scale, but your team has to run it. For a first prototype most teams start closed and revisit later.
+
+## Tokens, the context window and cost
+
+Models do not read letters or words. They read tokens. A common rule of thumb is that one token is about four characters of ordinary English, which is roughly three quarters of a word. It is only an estimate. Code and many non-English languages need more tokens for the same amount of text.
+
+The <Term id="context-window">context window</Term> is all the text a model can consider at once when it writes a response, and it includes the answer the model is writing. Think of it as working memory for one response. It is separate from the huge body of data the model was trained on.
+
+<Figure id="context-window" />
+
+Context windows vary by model. Anthropic's documentation lists windows up to 1 million tokens for its current models, and others are smaller. Check the provider's page for the model you plan to use.
+
+<LastChecked date="Oct 2026" />
+
+Two things follow from how the window works.
+
+First, a conversation grows. Each turn, the earlier messages are sent again along with the new one, so the input gets longer every turn. A long chat costs more per message than a short one, and it also takes longer to answer. The wait between sending a request and getting an answer is called <Term id="latency">latency</Term>, and it grows with long inputs and long outputs.
+
+Second, more context is not automatically better. Anthropic's documentation notes that as the amount of text grows, a model's accuracy and recall can get worse. It calls this <Term id="context-rot">context rot</Term>. Choosing what goes into the window matters as much as how much room there is.
+
+Providers charge by the token. They usually quote a price per million tokens, with one price for input and a higher one for output. The cost of one request is the input tokens times the input price plus the output tokens times the output price. Here is a worked example with made-up prices, so you can see the shape of the math. Say a request sends 2,000 tokens in and gets 500 tokens back, at an example price of $3 per million input tokens and $15 per million output tokens. The input costs 2,000 divided by 1,000,000, times $3, which is $0.006. The output costs 500 divided by 1,000,000, times $15, which is $0.0075. One request costs about $0.0135, a little over a cent. A cent sounds like nothing until a product makes ten requests per user per day for thousands of users. You will build the full calculator in Round 14.
+
+<Callout kind="gap">
+Three common mistakes. Assuming the model knows your company's facts, when it only knows what is in its training data and in the prompt. Assuming a chat remembers everything forever, when it only has what fits in the window. And forgetting that long documents and long answers add to the bill.
+</Callout>
+
+## Questions to ask your team
+
+Which model are we using, and why that one? Roughly how many tokens does one request use, in and out? What does that cost per user per month at the volume we expect? What does the model not know that our users will expect it to know?
+
+<Sources>
+Sources: [Anthropic, Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows). Checked Oct 2026.
+</Sources>

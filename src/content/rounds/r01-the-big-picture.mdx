@@ -1,0 +1,57 @@
+## What AI is, in one picture
+
+<Term id="ai">AI</Term> is software that does tasks that normally need human judgment, like writing a paragraph, spotting a defect in a photo or recommending a song. Most of it today is built with <Term id="machine-learning">machine learning</Term>, which means the software learns patterns from many examples instead of following rules a person wrote by hand. The newest and most capable kind uses <Term id="deep-learning">deep learning</Term>, which is machine learning on very large layered networks of numbers.
+
+The tools you use every day, like Claude, ChatGPT and Gemini, run on a <Term id="llm">large language model</Term>, or LLM. An LLM is a deep-learning model trained on huge amounts of text so that it can write text. Each term sits inside the one before it.
+
+<Figure id="ai-nesting" />
+
+This matters for a product manager because "we will add AI" can mean very different things. A fraud score from machine learning and a chat assistant from an LLM have different costs, different risks and different ways of going wrong. Part of your job is to ask which one is meant.
+
+## What an LLM actually does
+
+An LLM does one thing, over and over. It looks at the text so far and scores every possible <Term id="token">token</Term> that could come next. A token is a small chunk of text, often a whole word or part of one. The model picks one token, adds it to the text, and repeats. That loop, called <Term id="next-token">next-token prediction</Term>, is how it writes a whole answer.
+
+Picking is where a setting called <Term id="temperature">temperature</Term> comes in. At a low temperature the model almost always picks its top-scoring token, so answers are steady and repetitive. At a high temperature it gives lower-scoring tokens a real chance, so answers are more varied and also riskier. You will play with this in a moment.
+
+Because the pick is a weighted chance, the output is <Term id="probabilistic">probabilistic</Term>. Send the same prompt twice and you may get two different answers. If you play an instrument, think of a session player improvising over a chord chart. The habits are strong and the style is consistent, but no two takes are identical.
+
+A model writes fluently whether or not what it writes is true. When it states something false with confidence, that is called a <Term id="hallucination">hallucination</Term>. Round 11 covers why it happens and what to do about it. For now, remember that fluent is not the same as correct.
+
+<Callout kind="gap">
+A model does not look facts up. It predicts likely text. When an answer must be correct, such as a policy, a price or a legal point, the product has to supply the facts and check the result. Rounds 4 and 7 show how.
+</Callout>
+
+## What an AI product manager does differently
+
+An <Term id="ai-pm">AI product manager</Term> does the same core job as any product manager: decide what to build, for whom, and how to know it worked. Three things change.
+
+1. **You need real technical depth.** You do not need to write the model, but you do need to know what it can do, what it cannot, and why. Good questions come from understanding.
+2. **You build two kinds of things.** Sometimes you add an AI feature to an existing product, like a summary button. Sometimes the whole product is AI. The risks and the economics differ.
+3. **You are expected to use AI tools yourself.** Teams assume you use them to draft, analyze and prototype. Not using them is now a visible gap.
+
+Underneath all three is one big shift. In traditional software the same input gives the same output, so you can write a spec and test against it. With an LLM the output varies and can be wrong while sounding right. You cannot promise exact behavior in advance. Instead you define what good looks like, then measure it with tests called <Term id="eval">evals</Term>. An eval scores a system's outputs against a standard for good, so quality is measured instead of assumed. Evals get their own line on the map, and they come up in almost every round.
+
+## The map of this course
+
+The course is a transit map with nine lines. Each line is one topic, and you ride each one twice: first a broad 101 stop in Zone 1, then two deeper 102 stops in Zone 2.
+
+- **Getting Started** (this line): the big ideas.
+- **Prompt Engineering**: how to ask a model well.
+- **Context Engineering and RAG**: how to give the model the right information.
+- **AI Prototyping and Vibe Coding**: how to build working prototypes fast with AI tools.
+- **AI Agents and Agentic Workflows**: how models take steps and use tools.
+- **AI Evals, Testing and Observability**: how to measure and watch quality.
+- **Foundation Models**: how to choose among the big models.
+- **AI PRDs and Building**: how to write the plan and manage risk.
+- **Career Resources**: how to turn all of this into work.
+
+Each round takes about 20 minutes: a quick warm-up, a short read, something to try, four check questions and a one-line takeaway. Rounds 2 to 10 finish Zone 1. Then Zone 2 goes deeper on every line.
+
+<Callout kind="change">
+Round 11, "How a model writes an answer", gives the full version of the temperature idea and the reasons models hallucinate.
+</Callout>
+
+## Questions to ask your team
+
+When someone proposes an AI feature, three questions get you most of the way. What exactly will the model do? What information will it have when it does it? How will we know it is good enough to ship? The rest of this course is mostly about answering those three well.

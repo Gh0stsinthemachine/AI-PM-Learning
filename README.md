@@ -2,7 +2,7 @@
 
 A 29-round interactive course (about 20 minutes per round) that starts at 101 and goes deeper, covering every topic on Aakash Gupta's AI PM Learning Roadmap. All content is original. It is built as a private claude.ai Artifact (a hosted page only its owner opens), and the same build also runs as a plain static site.
 
-Status: M0 scaffold. The course content, the map and the round player arrive next.
+Status: M1 in progress. Rounds 1 to 3, the map, the round player and progress sync are built. Rounds 4 to 29 are next.
 
 ## Commands
 
@@ -32,6 +32,10 @@ Status: M0 scaffold. The course content, the map and the round player arrive nex
 - `tests/content`: content-integrity checks (added with the course content).
 - `tests/e2e`: Playwright. Modes: `live` (stub with Claude available), `fallback` (no `window.claude`, like Vercel), `denied`, `no-tools`, `signed-out`, `rate-limited`, `slow`.
 - `tests/stub/claude-stub.js` is the fake `window.claude`. It is only loaded by Playwright or the dev server and never ships. The build fails if its sentinel is found in the bundle.
+
+## Writing rounds
+
+See `docs/STYLE_GUIDE.md`. Content lives in `src/content/` (`manifest.ts`, `glossary.ts`, `checks.ts`, `rounds/*.mdx`). `npm test` checks every round for length, links, terms and quiz quality.
 
 ## Platform contract
 

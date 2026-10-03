@@ -20,13 +20,24 @@
   /* The nine lines (modules) */
   --line-1: #d7263d;
   --line-2: #e8590c;
-  --line-3: #c98a00;
+  --line-3: #b07400;
   --line-4: #1f9d55;
   --line-5: #0e8f94;
   --line-6: #2f55d4;
   --line-7: #7b3fc4;
   --line-8: #c2307f;
   --line-9: #8a5a3c;
+
+  /* Text colour that reads on each line colour */
+  --on-line-1: #ffffff;
+  --on-line-2: #16191d;
+  --on-line-3: #16191d;
+  --on-line-4: #16191d;
+  --on-line-5: #16191d;
+  --on-line-6: #ffffff;
+  --on-line-7: #ffffff;
+  --on-line-8: #ffffff;
+  --on-line-9: #ffffff;
 
   --font-sign: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -64,6 +75,15 @@
     --line-7: #a87bff;
     --line-8: #ff6fb1;
     --line-9: #c79470;
+    --on-line-1: #0f1318;
+    --on-line-2: #0f1318;
+    --on-line-3: #0f1318;
+    --on-line-4: #0f1318;
+    --on-line-5: #0f1318;
+    --on-line-6: #0f1318;
+    --on-line-7: #0f1318;
+    --on-line-8: #0f1318;
+    --on-line-9: #0f1318;
     color-scheme: dark;
   }
 }
@@ -89,5 +109,14 @@
   --line-7: #a87bff;
   --line-8: #ff6fb1;
   --line-9: #c79470;
+  --on-line-1: #0f1318;
+  --on-line-2: #0f1318;
+  --on-line-3: #0f1318;
+  --on-line-4: #0f1318;
+  --on-line-5: #0f1318;
+  --on-line-6: #0f1318;
+  --on-line-7: #0f1318;
+  --on-line-8: #0f1318;
+  --on-line-9: #0f1318;
   color-scheme: dark;
 }

@@ -2,8 +2,10 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/tokens.css';
 import './styles/base.css';
+import './styles/app.css';
 import { App } from './App';
 import { RuntimeProvider } from './runtime/capabilities';
+import { ProgressProvider } from './state/ProgressProvider';
 
 // The viewer's hot hook keeps state across republishes. It is absent outside
 // claude.ai, hence the optional chaining.
@@ -15,7 +17,9 @@ function start(data?: unknown) {
   if (!el) return;
   createRoot(el).render(
     <RuntimeProvider>
-      <App initial={(data as { route?: string } | undefined) ?? {}} />
+      <ProgressProvider>
+        <App initial={(data as { route?: string } | undefined) ?? {}} />
+      </ProgressProvider>
     </RuntimeProvider>,
   );
 }
